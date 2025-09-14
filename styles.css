@@ -1,11 +1,81 @@
+/* Mobile first */
 html, body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
 }
 
-main {
-    margin: 2em;
+body {
+  max-width: 1200px;
+  margin: 0 auto;   
+  padding: 1em;
+}
+
+nav {
+    margin-bottom: 2em;
+    display: flex;
+}
+
+.logo {
+    display: none;
+}
+
+.nav-links {
+    width: 100%;
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-link {
+    color: black;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.splash .bio {
+    text-align: center;
+}
+
+.bio  p {
+    line-height: 1.75;
+    font-size: 1.25rem;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.splash-section > img {
+    border-radius: 1em;
+    width: 100%;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+    .splash-container .bio {
+        text-align: left;
+    }
+
+    .bio h1 {
+        font-size: 3em;
+    }
+
+    .bio p {
+        font-size: 1.5rem;
+    }
+
+    .splash {
+        display: flex;
+        align-items: center;
+        gap: 2em;
+    }
+}
+
+/* Desktop and up */
+@media (min-width: 1025px) {
 }
