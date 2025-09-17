@@ -5,41 +5,40 @@ html, body {
 
 body {
   max-width: 1200px;
-  margin: 0 auto;   
+  margin: 0;
   padding: 1em;
 }
 
 nav {
-    margin-bottom: 2em;
-    /* display: flex; */
-    display: none;
-}
-
-h2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 2em;
+    margin-bottom: 3em;
 }
 
 .logo {
-    display: none;
+    color: black;
+    font-size: 1.75em;
+    font-weight: 900;
 }
 
 .nav-links {
-    width: 100%;
-    padding-left: 0;
     list-style: none;
-    display: flex;
-    justify-content: space-around;
 }
 
 .nav-link {
     color: black;
     font-weight: 700;
     font-size: 1.25rem;
-    text-decoration: none;
 }
 
 .nav-link:hover {
     text-decoration: underline;
+}
+
+h2 {
+    margin-top: 2em;
 }
 
 .splash .bio {
@@ -111,6 +110,83 @@ h2 {
     width: 2.25em;
 }
 
+
+/* Projects page */
+
+.projects {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5em;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: #fff;
+    border-radius: 12px;
+    padding: 0.5em 1em 2em 1em;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.project h2 {
+    margin-top: 1em;
+}
+
+.project img {
+    height: 40%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.project .skills {
+    margin: 1.25em auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.project .skill {
+    background: #f0f4f8;
+    color: #333;
+    padding: 0.35em 0.65em;
+    border-radius: 0.5em;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.project .links {
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.project .links a {
+    padding: 0.75em 2em;
+    text-decoration: none;
+    border: 2px solid #333;
+    font-weight: 600;
+    border-radius: 0.2em;
+    background: #333;
+    color: #f9f9f9;
+}
+
+.project .links a.primary {
+    border-color: #ccc;
+    background: #f9f9f9;
+    color: #333;
+}
+
+footer {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+
 /* Tablet and up */
 @media (min-width: 768px) {
     .splash-container .bio {
@@ -129,6 +205,15 @@ h2 {
         display: flex;
         align-items: center;
         gap: 2em;
+    }
+
+    .projects {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .project {
+        width: 45%;
     }
 }
 
