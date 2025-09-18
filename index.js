@@ -21,7 +21,7 @@ projects.forEach(project => {
 
     projectElement.innerHTML = `
         <h2>${project.name}</h2>
-        <p>${project.description}</p>
+        <p class="description">${project.description}</p>
         <p><strong>Date completed:</strong> ${formattedDate}</p>
         <img src="${project.imageUrl}" alt="Screenshot of ${project.name}" />
         <div class="skills">${skills}</div>

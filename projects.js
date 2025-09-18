@@ -12,7 +12,7 @@ export const projects = [
         name: "Chef Claude",
         description: "A React app that integrates with the Claude.ai API to generate custom recipes based on user-provided ingredients.",
         completion_date: "2025-07-01",
-        skills: ["React", "Claude.ai API"],
+        skills: ["React", "Claude.ai API", "AWS Lambda"],
         link: "https://neil-scrimba-frontend-career-path.netlify.app/chef-claude/dist/index.html",
         github_repo: "https://github.com/iccir919/scrimba-frontend-developer-career-path/tree/main/chef-claude",
         imageUrl: "/assets/projects/chef-claude.png"

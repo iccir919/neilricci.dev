@@ -1,5 +1,8 @@
 /* Mobile first */
+
+
 html, body {
+    box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -126,12 +129,17 @@ h2 {
     justify-content: space-around;
     background: #fff;
     border-radius: 12px;
-    padding: 0.5em 1em 2em 1em;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 1em 2em;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .project h2 {
     margin-top: 1em;
+    margin-bottom: 0;
+}
+
+.project .description {
+    margin-bottom: 0;
 }
 
 .project img {
@@ -213,7 +221,7 @@ footer {
     }
 
     .project {
-        width: 45%;
+        width: 40%;
     }
 }
 
