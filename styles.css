@@ -279,6 +279,7 @@ footer {
 
 /* Tablet and up */
 @media (min-width: 768px) {
+
     .splash-container .bio {
         text-align: left;
     }
