@@ -22,6 +22,7 @@ nav {
 }
 
 .logo, .nav-link {
+    text-underline-offset: 5px;
     text-decoration-thickness: 0.5rem;
 } 
 
@@ -114,6 +115,7 @@ a[href="/projects.html"] {
     font-size: 1rem;
     font-weight: 700;
     text-decoration-thickness: 0.5rem;
+    text-underline-offset: 5px;
     margin-bottom: 2em;
 }
 
