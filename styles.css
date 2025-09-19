@@ -1,8 +1,9 @@
 /* Mobile first */
-
+* {
+    box-sizing: border-box;
+}
 
 html, body {
-    box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -20,10 +21,19 @@ nav {
     margin-bottom: 3em;
 }
 
+.logo, .nav-link {
+    text-decoration-thickness: 0.5rem;
+} 
+
+
 .logo {
     color: black;
-    font-size: 1.75em;
+    font-size: 1.75rem;
     font-weight: 900;
+}
+
+.logo:hover {
+    font-size: 1.85rem
 }
 
 .nav-links {
@@ -37,7 +47,7 @@ nav {
 }
 
 .nav-link:hover {
-    text-decoration: underline;
+    font-size: 1.35rem;
 }
 
 h2 {
@@ -66,6 +76,7 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 1.5em;
+    margin-bottom: 1em;
 }
 
 .recent-project {
@@ -98,6 +109,78 @@ h2 {
     line-height: 1.5;
 }
 
+a[href="/projects.html"] {
+    color: black;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration-thickness: 0.5rem;
+    margin-bottom: 2em;
+}
+
+a[href="/projects.html"]:hover {
+    font-size: 1.15rem;
+}
+
+.contact {
+    margin: 1em auto 2em;
+    max-width: 600px;
+    width: 100%;
+}
+
+.contact h3 {
+    text-align: center;
+}
+
+.contact div {
+    margin-bottom: 1em;
+}
+
+.contact label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    font-size: 1rem;
+    line-height: 1.25em;
+    border: 1px solid #ccc;
+    padding: 0.5em .75em;
+    border-radius: 0.5em;
+}
+
+.email a,
+.contact button {
+    display: inline-block;
+    background: black;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.75em 1.5em;
+    text-decoration: none;
+    border: none;
+    border-radius: 0.5em;
+    text-align: center;
+    cursor: pointer;
+}
+
+.contact button:hover,
+.email a:hover {
+    font-size: 1.15rem;
+}
+
+.email {
+    margin-top: 1em;
+    text-align: center;
+    margin: 1em 0 2em;
+}
+
+.email p {
+    margin-bottom: 0.5em;
+}
+
 .social-links {
     list-style: none;
     display: flex;
@@ -105,7 +188,6 @@ h2 {
 }
 
 .social-icon {
-    padding: 1em;
     width: 2em;
 } 
 
