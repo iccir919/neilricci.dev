@@ -1,6 +1,14 @@
-/* Mobile first */
+/* =========================
+   Global / Base
+   ========================= */
+
 * {
     box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #000;
+    --color-secondary: #333;
 }
 
 html, body {
@@ -13,43 +21,74 @@ body {
   padding: 1em;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a,
+button {
+    transition: 0.2s ease;
+}
+
+a:focus,
+button:focus {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 4px;
+}
+
+
+/* =========================
+   Navigation
+   ========================= */
+
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 2em;
-    margin-bottom: 3em;
+    margin: 2em 0 3em;
 }
 
-.logo, .nav-link {
+.logo,
+.nav-link {
     text-underline-offset: 5px;
     text-decoration-thickness: 0.5rem;
-} 
-
+}
 
 .logo {
-    color: black;
+    color: var(--color-primary);
     font-size: 1.75rem;
     font-weight: 900;
 }
 
 .logo:hover {
-    font-size: 1.85rem
+    transform: scale(1.05);
 }
 
 .nav-links {
     list-style: none;
+    display: flex;
+    gap: 2em;
+    padding: 0;
+    margin: 0;
 }
 
 .nav-link {
-    color: black;
+    color: var(--color-primary);
     font-weight: 700;
     font-size: 1.25rem;
+    display: inline-block;
 }
 
 .nav-link:hover {
-    font-size: 1.35rem;
+    transform: scale(1.05);
 }
+
+/* =========================
+   Splash / Bio
+   ========================= */
+
 
 h2 {
     margin-top: 2em;
@@ -73,6 +112,10 @@ h2 {
     width: 100%;
 }
 
+/* =========================
+   Recent Projects
+   ========================= */
+
 .recent-projects {
     display: flex;
     flex-direction: column;
@@ -88,8 +131,9 @@ h2 {
     background: #ffffffcf; 
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    color: initial;
+    transition: transform 0.2s ease;
     text-decoration: none;
-    color: initial
 }
 
 .recent-project:hover {
@@ -98,30 +142,43 @@ h2 {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
 }
 
+.recent-project h3 {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 0.25rem;
+}
+
 .recent-project img {
     width: 100%;
     aspect-ratio: 4/3;
     object-fit: cover;
 }
 
-.recent-project p {
+.recent-project > p {
+    text-decoration: none;
     color: rgb(73, 73, 73);
     font-size: 0.85rem;
     line-height: 1.5;
 }
 
-a[href="/projects.html"] {
+.content a[href="/projects.html"] {
     color: black;
     font-size: 1rem;
     font-weight: 700;
     text-decoration-thickness: 0.5rem;
     text-underline-offset: 5px;
     margin-bottom: 2em;
+    display: inline-block;
 }
 
-a[href="/projects.html"]:hover {
-    font-size: 1.15rem;
+.content a[href="/projects.html"]:hover {
+    transform: scale(1.05);
 }
+
+
+/* =========================
+   Contact Section
+   ========================= */
 
 .contact {
     margin: 1em auto 2em;
@@ -153,6 +210,12 @@ a[href="/projects.html"]:hover {
     border-radius: 0.5em;
 }
 
+.contact input:focus,
+.contact textarea:focus {
+    border-color: black;
+    outline: none;
+}
+
 .email a,
 .contact button {
     display: inline-block;
@@ -174,7 +237,6 @@ a[href="/projects.html"]:hover {
 }
 
 .email {
-    margin-top: 1em;
     text-align: center;
     margin: 1em 0 2em;
 }
@@ -187,18 +249,23 @@ a[href="/projects.html"]:hover {
     list-style: none;
     display: flex;
     justify-content: space-around;
+    padding: 0;
+    margin: 0;
 }
 
 .social-icon {
     width: 2em;
+    transition: transform 0.2s ease;
 } 
 
 .social-icon:hover {
-    width: 2.25em;
+    transform: scale(1.15);
 }
 
 
-/* Projects page */
+/* =========================
+   Projects Page
+   ========================= */
 
 .projects {
     margin-top: 2em;
@@ -215,11 +282,12 @@ a[href="/projects.html"]:hover {
     border-radius: 12px;
     padding: 1em 2em;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    flex: 1 1 100%;
+    max-width: 600px;
 }
 
 .project h2 {
-    margin-top: 1em;
-    margin-bottom: 0;
+    margin: 1em 0 0;
 }
 
 .project .description {
@@ -227,7 +295,7 @@ a[href="/projects.html"]:hover {
 }
 
 .project img {
-    height: 40%;
+    height: auto;
     width: 100%;
     object-fit: cover;
 }
@@ -252,6 +320,7 @@ a[href="/projects.html"]:hover {
     margin-top: 1em;
     display: flex;
     justify-content: space-between;
+    gap: 1em;
 }
 
 .project .links a {
@@ -262,6 +331,11 @@ a[href="/projects.html"]:hover {
     border-radius: 0.2em;
     background: #333;
     color: #f9f9f9;
+    transition: transform 0.2s ease;
+}
+
+.project .links a:hover {
+    transform: scale(1.05);
 }
 
 .project .links a.primary {
@@ -270,16 +344,22 @@ a[href="/projects.html"]:hover {
     color: #333;
 }
 
+/* =========================
+   Footer
+   ========================= */
+
 footer {
-    margin-top: 3rem;
-    padding: 1.5rem;
+    margin-top: auto;
+    padding: 2em 1em;
     text-align: center;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: #666;
 }
 
+/* =========================
+   Responsive Layouts
+   ========================= */
 
-/* Tablet and up */
 @media (min-width: 768px) {
 
     .splash-container .bio {
@@ -302,11 +382,13 @@ footer {
 
     .projects {
         flex-direction: row;
+        justify-content: space-between;
         flex-wrap: wrap;
     }
 
     .project {
-        width: 40%;
+        flex: 1 1 45%; 
+        max-width: 45%;
     }
 }
 
@@ -317,7 +399,8 @@ footer {
     }
 
     .recent-project {
-        max-width: 30%;
+        flex: 1 1 30%;
     }
 
 }
+
