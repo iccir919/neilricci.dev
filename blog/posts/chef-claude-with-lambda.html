@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-RTB4EGWXPD"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-RTB4EGWXPD');
+        </script>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/../../styles.css" />
+        <title>Blog - neilricci.dev</title>
+    </head>
+    <body>
+        <nav>
+            <a href="/index.html" class="logo">neilricci.dev</a>
+            <ul class="nav-links">
+                <li><a class="nav-link" href="/projects.html">Projects</a></li>
+                <li><a class="nav-link" href="/index.html#connect">Let's connect</a></li>
+            </ul>
+        </nav>
+        <div class="blog-content">
+            <h1>Blog</h1>
+            <h2>Implementing Chef Claude with AWS Lambda and Netlify</h2>
+            <p><time datetime="2025-09-22">September 22, 2025</time></p>
+            <p>
+                If you are like me and a student of the Frontend Developer Career Path from <a href="https://scrimba.com/">Scrimba</a> 
+                and finished the React State module of the React Basics section, then you are probably wanting to deploy your new shiny Chef Claude
+                AI application so that you can share to help your friends and family with finding a recipe for their next meal. But the Chef Claude 
+                application is different from the previous applications of the course in that the application requires an API setup. 
+            </p>
+            <h3>What is an API and why do I need set up one for Chef Claude?</h3>
+            <p>
+                API stands for Application Programming Interface and just like the elongated name implies, it is the messenger between the user's computer
+                and the Anthropic servers. For our Chef Claude application, the API has a few functions: taking the ingredients from the the user's computer, 
+                sending them to Anthropic's servers, receiving the delicious recipe from their artificial intelligence, and sending the recipe to the 
+                user's computer to be displayed in their Chef Claude app.
+            </p>
+            <h3>Why use AWS Lambda to set up an API for Chef Claude?</h3>
+            <p>
+                Traditionally, API's are set up on a server, which are computers (your own or usually in a remote location) that are constantly running.
+                However, as you can imagine with managing anything of your own, this computer will require upkeep/maintenance, considerations for scaling
+                (what if Chef Claude has 100 users at one time? 1,000 users? 100,000 users?), and of course, money to keep up a system constantly that is
+                always available to handle requests. 
+                <br />
+                But let's be honest with ourselves and admit that our Chef Claude application will infrequently need to handle only a few requests at a time 
+                and for these reasons, a serverless function is a good choice for our Chef Claude application. Serverless does not mean that there are no servers 
+                but instead that there you don't have to think about or manage the servers. I chose AWS Lambda as my serverless option to work more in the 
+                Amazon Web Services ecosystem so that I can be better prepared for bigger and better projects in the future that require features like API Gateway, 
+                DynamoDB, S3, etc. 
+                <br />
+                One part of the server of our Chef Claude application that we want to keep hidden is our API key from Anthropic. This secret value will allow
+                our server to make the recipe requests to Anthropic. We need to keep the value our API key a secret and avoid any malicious user from stealing our
+                key and using it to to make their own expensive AI queries at the expense of our bank account!
+            </p>
+            <h3>How to set up AWS for Chef Claude</h3>
+            <h4>Step 1: Sign up for an AWS account or log into your existing one</h4>
+            <p>
+                If you do not already have an AWS account, then you can sign up with the <a href="https://repost.aws/knowledge-center/what-is-free-tier">free tier</a>, 
+                where you can use AWS products free of charge up to a specific maximum amount of usage each month (1,000,000 requests per month!). When you create an AWS 
+                account, your account is the root user with un restricted access to everything. Login to your AWS account and search for the "Lambda" service provide by 
+                AWS and you should be redirected to your Lambda dashboard.
+            </p>
+            <h4>Step 2: Create a Lambda function for Chef Claude</h4>
+            <p>
+                In the upper right of your Lambda dashboard, click on the button to "Create function". AWS provides different some different to create a function. 
+                Since this is our first time, select the option to "Use a blueprint" and select the "Hello world function" blueprint. Then give your function a name 
+                as you would a JavaScript variable (in camelCase). I chose, "chefClaude" for my function. For the "Execution role" section (what a name!), choose to
+                "Create a new role with basic Lambda permissions".
+            </p>
+            <h4>Step 3: Create a function URL for your Lambda function</h4>
+            <p>
+                In a traditional API, there are endpoints that depending on which is requested produce different results. With Lambda, we can create a URL that will run
+                 a function that produces and return the same result. For our Chef Claude application, we will create a URL that will take requests from our application
+                (with the ingredients in included as query parameters in the URL), run the <code>getRecipeFromChefClaude</code> function from the "ai.js" file which handles
+                making the request to the Claude AI for a recipe.
+                <br />
+                To do this, look below the "Function overview" section of your Lambda dashboard and the menu that immediately follows, click on the "Configuration" tab. 
+                Within this tab section, click the button to "Create function URL". For the Auth Type, select NONE. I know this sounds wrong (the lack of any authentication)
+                 but we will address this within the Additional Settings section and choosing to "Configure cross-origin resource sharing (CORS)". The default value is "*" 
+                 which is a wildcard symbol, meaning that any website can make requests to our function URL. When you are done testing your application within your local 
+                 environment (and away from localhost), you should come back here and the URL of your Chef Claude application.
+            </p>
+            <h4>Step 4: Test your function URL within your Chef Claude application</h4>
+            <p>
+                Now that we have our function URL, let's start setting up our Chef Application application to use it. Within our request to our function URL, we need to include 
+                the list of ingredients and our Lambda function needs to be able to receive this list of ingredients. But how are we going to do this? The answer is through query
+                parameters and adding the list of ingredients as a detail on to the end of the function URL (e.g "www.chef-claude-app.com?ingredients=oregano&bread&garlic"). We now
+                need to change our Lambda function code and the Chef Claude application code to test out query parameters with the ingredients from our application. From the menu
+                where was the "Configuration" tab, now find and select "Code". Find the boilerplate code and replace it with the code below. In the code above, we are taking the 
+                parameters as they are received are received and using the <code>decodeURIComponent</code> JavaScript function to remove some encoding that is added to our list of 
+                ingredients by our Chef Claude application.  
+            </p>
+            <pre><code>
+console.log('Loading function');
+
+export const handler = async (event, context) => {
+    let ingredientsArr = []
+
+    if (event.queryStringParameters && event.queryStringParameters.ingredients) {
+        const decoded = decodeURIComponent(event.queryStringParameters.ingredients);
+        ingredientsArr = decoded.split(",")
+    }
+
+    return ingredientsArr.length > 0 ? ingredientsArr.join(" ") : null
+};
+            </code></pre>
+            <p>
+                After replacing the code, the changes in the code editor should be saved automatically however for the changes to take effect to the function URL, you need to 
+                click on the "Deploy" button. Now, with our Lambda function ready, we can have our Chef Claude application make a request to it. Within the "ai.js" file of the
+                Chef Claude application, keep the <code>ingredientsArr</code> variable but comment out everything else and replace with the code below. 
+            </p>
+            <code><pre>
+export async function getRecipeFromChefClaude(ingredientsArr) {
+    console.log("Ingredients received from user: ", ingredientsArr)
+    const ingredients = encodeURIComponent(ingredientsArr.join(",")); 
+
+    const lambdaUrl = "https://jk5c5fdfaqd4cyd3ksdv6kklbi0lxcza.lambda-url.us-east-1.on.aws/";
+    const url = `${lambdaUrl}?ingredients=${encodeURIComponent(ingredients)}`; 
+
+    const response = await fetch(url)
+    const data = await response.text()
+    console.log("Data received from Lambda function: ", data)
+}
+            </pre></code>
+            <p> 
+                As it was before, the <code>ingredientsArr</code> was just an array of strings. In the code above, the ingredients are joined together by commas and then this
+                list is properly formatted to be properly added on to the end of the URL. The <code>decodeURIComponent</code> function within our Lambda function removes the 
+                encoding and translates the list back it's original format. Our application receives this text list from our Lambda function and logs it to the console within
+                the web browser that Chef Claude is running. Now with all these changes completed, start up your Chef Claude application to test if the ingredients inputted in 
+                the application are returned by the Lambda function and logged in the browser's console.
+            </p>
+            <h4>Step 5: Move the Anthropic AI code from Chef Claude to your Lambda function</h4>
+            <p>
+                Now that the Lambda function is connected to our Chef Claude application and have confirmed the ingredients can be sent through query parameters, the next step 
+                is to move the AI code from our local project to our Lambda function. The code for the Lambda function will look very much like the original code with the 
+                addition of reading the list of ingredients from the query parameters of the URL request.
+            </p>
+            <code><pre>
+import Anthropic from "@anthropic-ai/sdk"
+
+const SYSTEM_PROMPT = `
+You are an assistant that receives a list of ingredients that a user has and suggests a recipe they could make with some or all of those ingredients. You don't need to use every ingredient they mention in your recipe. The recipe can include additional ingredients they didn't mention, but try not to include too many extra ingredients. Format your response in markdown to make it easier to render to a web page
+`
+
+export const handler = async (event) => {
+
+
+    const anthropic = new Anthropic({
+        apiKey: process.env.ANTHROPIC_API_KEY,
+        dangerouslyAllowBrowser: true,
+    })
+
+    let ingredientsArr = []
+
+    if ( event.queryStringParameters && event.queryStringParameters.ingredients ) {
+        const decoded = decodeURIComponent(event.queryStringParameters.ingredients);
+        ingredientsArr = decoded.split(",")
+    }
+
+    const ingredientsString = ingredientsArr.length > 0 ? ingredientsArr.join(", ") : "nothing"
+
+    const msg = await anthropic.messages.create({
+        model: "claude-3-haiku-20240307",
+        max_tokens: 1024,
+        system: SYSTEM_PROMPT,
+        messages: [
+            { role: "user", content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make!` },
+        ],
+    });
+    return msg.content[0].text
+};
+            </pre></code>
+            <h3>Step 6: Creating a Layer for your Lambda function</h3>
+            <p>
+                At the top of our code for our Lambda function there is an import of the Anthropic SDK however we have not
+                installed this library anywhere yet. AWS Lambda doesn’t magically come with external libraries like @anthropic-ai/sdk preinstalled. I used the Layer feature
+                of Lambda. A is a separate package of libraries (or code) that are used in the function’s deployment. Using my computer's terminal and the code below, I created the 
+                necessary .zip file for my Layer for my Lambda function. 
+            </p>
+            <pre><code>
+mkdir nodejs
+cd nodejs
+npm init -y
+npm install @anthropic-ai/sdk
+cd ..
+zip -r layer.zip nodejs
+            </code></pre>
+            <p>
+                From the main Lambda page, in the panel on the left and under Additional Resources, there is the link to the Layers page. On this page, click the "Create layer"
+                button. Give the Layer a name in camel case (e.g. chefClaudeLayer) and then select the <code>layer.zip</code> which was just created. After the Layer has been 
+                uploaded, copy the Version ARN and then head back to the dashboard page of Lambda function for the Chef Claude application. In the "Function overview" section, 
+                click on the "Layers" link to view the Layers included with the function. Then click the button "Add layer", choose to "Specify an ARN", and paste the Version ARN
+                to the related input. With all this done, go back to your Lambda function's dashboard and "Deploy" one more time.
+            </p>
+            <h3>Step 7: Configuring your Lambda function</h3>
+            <p>
+                Almost there! Just a few more quick steps within the Configuration section of your Lambda function again. Don't forget that the Anthropic API Key has not yet been 
+                moved to Lambda function. In order to do so, choose "Environment Variables" from the side panel. I suggest using the same name for the key 
+                (ANTHROPIC_API_KEY) and copy and paste the value from the .env file from your local project. 
+                <br />
+                One other configuration I recommend is changing the length of timeout allowed for the Lambda function from the "General Configuration" section. Since our function 
+                is making a request to the Anthropic API, we should change the default timeout allowed from 3 seconds to 10 seconds inorder to give Claude more than a few seconds to generate a recipe. 
+            </p>
+            <h3>Step 8 (instructions not included): Deploy your application and share with your friends and family!</h3>
+        </div>
+    </body>
