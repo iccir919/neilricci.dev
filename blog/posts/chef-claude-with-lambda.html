@@ -37,7 +37,7 @@
             <h3>What is an API and why do I need set up one for Chef Claude?</h3>
             <p>
                 API stands for Application Programming Interface and just like the elongated name implies, it is the messenger between the user's computer
-                and the Anthropic servers. For our Chef Claude application, the API has a few functions: taking the ingredients from the the user's computer, 
+                and the Anthropic servers. For our Chef Claude application, the API has a few functions: taking the ingredients from the user's computer, 
                 sending them to Anthropic's servers, receiving the delicious recipe from their artificial intelligence, and sending the recipe to the 
                 user's computer to be displayed in their Chef Claude app.
             </p>
@@ -49,13 +49,13 @@
                 always available to handle requests. 
                 <br />
                 But let's be honest with ourselves and admit that our Chef Claude application will infrequently need to handle only a few requests at a time 
-                and for these reasons, a serverless function is a good choice for our Chef Claude application. Serverless does not mean that there are no servers 
-                but instead that there you don't have to think about or manage the servers. I chose AWS Lambda as my serverless option to work more in the 
+                and for these reasons, a serverless function is a good choice for our Chef Claude application. Serverless doesn’t mean there are no servers 
+                — it means you don’t have to manage or think about them. I chose AWS Lambda as my serverless option to work more in the 
                 Amazon Web Services ecosystem so that I can be better prepared for bigger and better projects in the future that require features like API Gateway, 
                 DynamoDB, S3, etc. 
                 <br />
                 One part of the server of our Chef Claude application that we want to keep hidden is our API key from Anthropic. This secret value will allow
-                our server to make the recipe requests to Anthropic. We need to keep the value our API key a secret and avoid any malicious user from stealing our
+                our server to make the recipe requests to Anthropic. We need to keep our API key value a secret and avoid any malicious user from stealing our
                 key and using it to to make their own expensive AI queries at the expense of our bank account!
             </p>
             <h3>How to set up AWS for Chef Claude</h3>
@@ -68,7 +68,7 @@
             </p>
             <h4>Step 2: Create a Lambda function for Chef Claude</h4>
             <p>
-                In the upper right of your Lambda dashboard, click on the button to "Create function". AWS provides different some different to create a function. 
+                In the upper right of your Lambda dashboard, click on the button to "Create function". AWS provides several different ways to create a function. 
                 Since this is our first time, select the option to "Use a blueprint" and select the "Hello world function" blueprint. Then give your function a name 
                 as you would a JavaScript variable (in camelCase). I chose, "chefClaude" for my function. For the "Execution role" section (what a name!), choose to
                 "Create a new role with basic Lambda permissions".
@@ -77,14 +77,14 @@
             <p>
                 In a traditional API, there are endpoints that depending on which is requested produce different results. With Lambda, we can create a URL that will run
                  a function that produces and return the same result. For our Chef Claude application, we will create a URL that will take requests from our application
-                (with the ingredients in included as query parameters in the URL), run the <code>getRecipeFromChefClaude</code> function from the "ai.js" file which handles
+                (with the ingredients included as query parameters in the URL), run the <code>getRecipeFromChefClaude</code> function from the "ai.js" file which handles
                 making the request to the Claude AI for a recipe.
                 <br />
                 To do this, look below the "Function overview" section of your Lambda dashboard and the menu that immediately follows, click on the "Configuration" tab. 
-                Within this tab section, click the button to "Create function URL". For the Auth Type, select NONE. I know this sounds wrong (the lack of any authentication)
-                 but we will address this within the Additional Settings section and choosing to "Configure cross-origin resource sharing (CORS)". The default value is "*" 
-                 which is a wildcard symbol, meaning that any website can make requests to our function URL. When you are done testing your application within your local 
-                 environment (and away from localhost), you should come back here and the URL of your Chef Claude application.
+                Within this tab section, click the button to "Create function URL". For the Auth Type, select NONE. While this may seem insecure, we’ll handle access control 
+                by configuring CORS settings to restrict which websites can make requests to this function. The default value is "*" which is a wildcard symbol, meaning that 
+                any website can make requests to our function URL. When you are done testing your application within your local environment (and away from localhost), you 
+                should come back here and the URL of your Chef Claude application.
             </p>
             <h4>Step 4: Test your function URL within your Chef Claude application</h4>
             <p>
@@ -93,7 +93,7 @@
                 parameters and adding the list of ingredients as a detail on to the end of the function URL (e.g "www.chef-claude-app.com?ingredients=oregano&bread&garlic"). We now
                 need to change our Lambda function code and the Chef Claude application code to test out query parameters with the ingredients from our application. From the menu
                 where was the "Configuration" tab, now find and select "Code". Find the boilerplate code and replace it with the code below. In the code above, we are taking the 
-                parameters as they are received are received and using the <code>decodeURIComponent</code> JavaScript function to remove some encoding that is added to our list of 
+                parameters as they are received and using the <code>decodeURIComponent</code> JavaScript function to remove some encoding that is added to our list of 
                 ingredients by our Chef Claude application.  
             </p>
             <pre><code>
@@ -153,6 +153,7 @@ export const handler = async (event) => {
 
     const anthropic = new Anthropic({
         apiKey: process.env.ANTHROPIC_API_KEY,
+        // Make sure this environment variable is set in your Lambda configuration
         dangerouslyAllowBrowser: true,
     })
 
@@ -180,7 +181,7 @@ export const handler = async (event) => {
             <p>
                 At the top of our code for our Lambda function there is an import of the Anthropic SDK however we have not
                 installed this library anywhere yet. AWS Lambda doesn’t magically come with external libraries like @anthropic-ai/sdk preinstalled. I used the Layer feature
-                of Lambda. A is a separate package of libraries (or code) that are used in the function’s deployment. Using my computer's terminal and the code below, I created the 
+                of Lambda. A Layer is a separate package of libraries (or code) that are used in the function’s deployment. Using my computer's terminal and the code below, I created the 
                 necessary .zip file for my Layer for my Lambda function. 
             </p>
             <pre><code>
@@ -205,7 +206,7 @@ zip -r layer.zip nodejs
                 (ANTHROPIC_API_KEY) and copy and paste the value from the .env file from your local project. 
                 <br />
                 One other configuration I recommend is changing the length of timeout allowed for the Lambda function from the "General Configuration" section. Since our function 
-                is making a request to the Anthropic API, we should change the default timeout allowed from 3 seconds to 10 seconds inorder to give Claude more than a few seconds to generate a recipe. 
+                is making a request to the Anthropic API, change the default timeout from 3 seconds to 10 seconds in order to give Claude enough time to generate a recipe. 
             </p>
             <h3>Step 8 (instructions not included): Deploy your application and share with your friends and family!</h3>
         </div>
