@@ -25,6 +25,10 @@ body {
   padding: 1em;
 }
 
+a {
+    color: black;
+}
+
 p {
     font-size: var(--font-size);
     margin: 0 0 1.5em;
@@ -364,6 +368,11 @@ h2 {
 .blog-content {
     margin: 3em auto;
     max-width: var(--content-width);
+}
+
+.blog-content a {
+    text-underline-offset: 5px;
+    text-decoration-thickness: 0.25rem;
 }
 
 .blog-content ul {

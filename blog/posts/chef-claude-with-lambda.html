@@ -144,8 +144,9 @@ export async function getRecipeFromChefClaude(ingredientsArr) {
             <code><pre>
 import Anthropic from "@anthropic-ai/sdk"
 
+// Please be sure to include the original SYSTEM_PROMPT of the project
 const SYSTEM_PROMPT = `
-You are an assistant that receives a list of ingredients that a user has and suggests a recipe they could make with some or all of those ingredients. You don't need to use every ingredient they mention in your recipe. The recipe can include additional ingredients they didn't mention, but try not to include too many extra ingredients. Format your response in markdown to make it easier to render to a web page
+    You are an assistant...
 `
 
 export const handler = async (event) => {
@@ -206,7 +207,7 @@ zip -r layer.zip nodejs
                 (ANTHROPIC_API_KEY) and copy and paste the value from the .env file from your local project. 
                 <br />
                 One other configuration I recommend is changing the length of timeout allowed for the Lambda function from the "General Configuration" section. Since our function 
-                is making a request to the Anthropic API, change the default timeout from 3 seconds to 10 seconds in order to give Claude enough time to generate a recipe. 
+                is making a request to the Anthropic API,  to generate a recipe. 
             </p>
             <h3>Step 8 (instructions not included): Deploy your application and share with your friends and family!</h3>
         </div>
