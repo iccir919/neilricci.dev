@@ -411,6 +411,45 @@ figcaption {
     color: #888;
 }
 
+#lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#lightbox.hidden {
+    display: none;
+}
+
+#lightbox img {
+    max-width: 85%;
+    max-height: 75vh;
+    border-radius: .5em;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+#lightbox p {
+    color: #eee;
+    margin-top: 1em;
+    font-size: 1em;
+    text-align: center;
+}
+
+#lightbox::after {
+    content: "x";
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+}
+
 /* =========================
    Blog Page
    ========================= */
