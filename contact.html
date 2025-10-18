@@ -14,7 +14,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/styles.css" />
-        <title>neilricci.dev - Neil Ricci</title>
+        <title>Contact - Neil Ricci</title>
     </head>
     <body>
         <nav>
@@ -25,53 +25,39 @@
                 <li><a class="nav-link" href="/projects.html">Projects</a></li>
                 <li><a class="nav-link" href="/blog/index.html">Blog</a></li>
                 <li><a class="nav-link" href="/photos.html">Photos</a></li>
-                <li><a class="nav-link" href="/contact.html">Contact</a></li>
             </ul>
         </nav>
 
-        <div class="splash">
-            <div class="splash-section bio">
-                <p>I design and build <span class="bold">websites that are both clean and effortless to use</span>. With a focus on accessibility and simplicity, I help <span class="bold">transform ideas into digital experiences</span> that feel natural and intuitive.</p>
-            </div>
-            <div class="splash-section">
-                <img src="/assets/neil_ricci.jpeg" alt="Neil Ricci smiling with the Golden Gate Bridge in the background" />
-            </div>
-        </div>
-        <section class="recent-projects">
-            <h2>Recent projects</h2>
-            <div class="recent-projects-list">
+        <section class="contact">
+            <h2>Contact Me</h2>
+            <form 
+                id="contact-form"
+                action="https://formspree.io/f/neil.ricci9@gmail.com"
+                method="POST"
+            >
+
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required />
+
+                <label for="email">Email</label>
+                <input type="email" id="email" for="email" required />
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Send Message</button>
+                <p id="contact-form-status"></p>
+            </form>
+
+            <div class="email">
+                <p>Prefer to email me directly?</p>
                 <a 
-                    aria-label="Chef Claude"
-                    href="https://neil-scrimba-frontend-career-path.netlify.app/chef-claude/dist/index.html"
-                    target="_blank" 
-                    class="recent-project"
+                    href="mailto:neil.ricci9@gmail.com" 
+                    class="email-button"
                 >
-                    <h3>Chef Claude</h3>
-                    <img src="/assets//projects/chef-claude.png" alt="screenshot of Chef Claude application" />
-                    <p>React app that turns your kitchen ingredients into AI-generated recipes.</p>
-                </a>
-                <a 
-                    aria-label="Pulse Watch"
-                    href="https://iccir919.github.io/pulseWatch/public/index.html"
-                    target="_blank" 
-                    class="recent-project"
-                >
-                    <h3>Pulse Watch</h3>
-                    <img src="/assets/projects/pulse-watch.png" alt="screenshot of Pulse Watch application" />
-                    <p>JavaScript app to view and download Fitbit heart rate data via the Fitbit API.</p>
-                </a>
-                <a 
-                    aria-label="Oldagram"
-                    href="https://neil-scrimba-frontend-career-path.netlify.app/oldagram/index.html"
-                    target="_blank" 
-                    class="recent-project"
-                >
-                    <h3>Oldagram</h3>
-                    <img src="/assets/projects/oldagram.png" alt="screenshot of Oldagram" />
-                    <p>Instagram-style feed clone featuring celebrity profiles past and present.</p>
+                    Email Me
                 </a>
             </div>
-            <a href="/projects.html">View All of My Projects</a>
         </section>
 
         <footer>
@@ -100,5 +86,6 @@
             <p class="copyright">© 2025 Neil Ricci</p>
         </footer>
 
+        <script src="contact.js"></script>
     </body>
 </html>
