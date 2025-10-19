@@ -9,49 +9,39 @@
 :root {
     --color-primary: #000;
     --color-secondary: #333;
-
-    --font-size: 20px;
-
-    --content-width: 700px;
+    --color-link-hover: #1a1a2a;
+    --background-color: #fff;
+    --font-body: Verdana, Geneva, Tahoma, sans-serif;
+    --content-width: 1200px;
 }
 
 html, body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: var(--font-body);
 }
 
 body {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1em;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1em;
+    background: var(--background-color);
+    color: var(--color-primary);
 }
 
 a {
-    color: black;
+    color: var(--color-primary);
+    text-decoration-thickness: 0.15em;
+    text-underline-offset: 4px;
+    transition: all 0.2s ease;
 }
 
-p {
-    font-size: var(--font-size);
-    margin: 0 0 1.5em;
-    line-height: 1.5;
+a:hover {
+    opacity: 0.85;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+h1, h2, h3 {
+    font-weight: 900;
+    margin: 0 0 0.5;
 }
-
-a,
-button {
-    transition: 0.2s ease;
-}
-
-a:focus,
-button:focus {
-    outline: 3px solid var(--color-primary);
-    outline-offset: 4px;
-}
-
 
 /* =========================
    Navigation
@@ -63,30 +53,24 @@ nav {
     justify-content: space-around;
     align-items: center;
     gap: 1.25em;
-    margin: 2em 0 3em;
+    margin: 2em 0;
     text-align: center;
 }
 
 .logo {
     margin: 0;
     font-size: 1.75rem;
-    font-weight: 900;
-    transition: transform 0.2s ease;
 }
 
 .logo a {
     display: inline-block;
+    text-decoration: none;
     color: var(--color-primary);
+    transition: transform 0.2s ease;
 }
 
 .logo a:hover {
-    transform: scale(1.05);
-}
-
-.logo a,
-.nav-link {
-    text-underline-offset: 5px;
-    text-decoration-thickness: 0.25em;
+    transform: scale(1.05)
 }
 
 .nav-links {
@@ -100,43 +84,72 @@ nav {
 }
 
 .nav-link {
-    color: var(--color-primary);
     font-weight: 700;
     font-size: 1.1rem;
     display: inline-block;
-    transition: 0.2s ease;
+    color: var(--color-primary);
 }
 
 .nav-link:hover,
 .nav-link:active {
-    transform: scale(1.05);
+    transform: scale(1.25);
 }
 
 /* =========================
    Splash / Bio
    ========================= */
-
-
-h2 {
-    margin-top: 2em;
+.splash {
+    padding: 4em 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 2.5em;
 }
 
-.splash .bio {
-    text-align: center;
+.splash-section.bio {
+    flex: 1 1 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }
 
-.bio  p {
-    line-height: 1.75;
-    font-size: 1.25rem;
-}
-
-.bold {
+.splash-section.bio h2 {
+    font-size: 2.25rem;
     font-weight: 700;
+    margin-bottom: 0.5em;
 }
 
-.splash-section > img {
-    border-radius: 1em;
+.splash-section.bio p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--color-secondary);
+}
+
+.splash-section.bio .bold {
+    font-weight: bold;
+}
+
+.splash-section.image {
+    flex: 1 1 320px;
+    display: flex;
+    justify-content: center;
+}
+
+.splash-section img {
     width: 100%;
+    max-width: 340px;
+    border-radius: 1em;
+    object-fit: cover;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.splash-section.image img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
 }
 
 /* =========================
@@ -177,25 +190,26 @@ h2 {
 
 .recent-project img {
     width: 100%;
-    aspect-ratio: 4/3;
+    max-height: 190px;
     object-fit: cover;
+    border-radius: .5em;
 }
 
 .recent-project > p {
-    margin-top: 1em;
-    text-decoration: none;
+    margin-top: 0.75em;
     color: rgb(73, 73, 73);
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     line-height: 1.5;
 }
 
+
 .recent-projects a {
-    color: black;
+    color: var(--color-text-primary);
     font-size: 1rem;
     font-weight: 700;
     text-decoration-thickness: 0.5rem;
     text-underline-offset: 5px;
-    margin-bottom: 2em;
+    margin-top: 1em;
     display: inline-block;
 }
 
@@ -203,27 +217,6 @@ h2 {
     transform: scale(1.05);
 }
 
-
-/* =========================
-   Socials Section
-   ========================= */
-
-.social-links {
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    padding: 0;
-    margin: 0;
-}
-
-.social-icon {
-    width: 2em;
-    transition: transform 0.2s ease;
-} 
-
-.social-icon:hover {
-    transform: scale(1.15);
-}
 
 
 /* =========================
@@ -543,6 +536,12 @@ footer p {
     color: #777;
 }
 
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* =========================
    Responsive Layouts
    ========================= */
@@ -557,22 +556,31 @@ footer p {
         gap: 2em;
     }
 
-    .splash-container .bio {
+    .splash {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 3em;
         text-align: left;
     }
 
-    .bio h1 {
-        font-size: 3em;
+    .splash-section.bio {
+        flex: 1 1 50%;
     }
 
-    .bio p {
-        font-size: 1.5rem;
+    .splash-section img {
+        flex: 0 0 auto;
+        width: 200%;
+        height: 200%;
     }
 
-    .splash {
-        display: flex;
-        align-items: center;
+    .recent-projects-list {
         gap: 2em;
+    }
+
+    .recent-project img {
+        max-height: 160px;
     }
 
     .projects {
@@ -595,6 +603,8 @@ footer p {
 @media (min-width: 1025px) {
     .recent-projects-list {
         flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2em;
     }
 
     .recent-project {
@@ -617,4 +627,5 @@ footer p {
     }
 
 }
+
 
