@@ -202,7 +202,6 @@ nav {
     line-height: 1.5;
 }
 
-
 .recent-projects a {
     color: var(--color-text-primary);
     font-size: 1rem;
@@ -225,80 +224,101 @@ nav {
 
 .projects {
     margin-top: 2em;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 2.5em;
+    align-items: stretch;
 }
 
 .project {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    flex: 1 1 310px;
     background: #fff;
-    border-radius: 12px;
-    padding: 1em 2em;
+    border-radius: .85em;
+    overflow: hidden;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    flex: 1 1 100%;
-    max-width: 600px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.project h2 {
-    margin: 1em 0 0;
-}
-
-.project .description {
-    margin-bottom: 0;
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .project img {
-    height: auto;
     width: 100%;
+    height: 200px;
     object-fit: cover;
+    border-bottom: 1px solid #eee;
 }
 
-.project .skills {
-    margin: 1.25em auto;
+.project-content {
+    height: 100%;
+    padding: 1.25em 1.75em;
     display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
-}
-
-.project .skill {
-    background: #f0f4f8;
-    color: #333;
-    padding: 0.35em 0.65em;
-    border-radius: 0.5em;
-    font-size: 0.85rem;
-    font-weight: 500;
-}
-
-.project .links {
-    margin-top: 1em;
-    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     gap: 1em;
 }
 
-.project .links a {
-    padding: 0.75em 2em;
-    text-decoration: none;
-    border: 2px solid #333;
+
+.project h2 {
+    font-size: 1.3rem;
+    margin: 0;
+    color: #111;
+}
+
+
+.project .description {
+    color: #444;
+    font-size: 0.85rem;
+    line-height: 1.25;
+}
+
+.project p strong {
     font-weight: 600;
-    border-radius: 0.2em;
-    background: #333;
-    color: #f9f9f9;
-    transition: transform 0.2s ease;
+    color: #000;
+}
+
+.project .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.project .skill {
+    background: #eef3f8;
+    color: #333;
+    padding: 0.35em 0.65em;
+    border-radius: 0.5em;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.project .links {
+    display: flex;
+    gap: 1em;
+    margin-top: auto;
+}
+
+.project .links a {
+    flex: 1;
+    text-align: center;
+    padding: 0.65em 0;
+    border: 2px solid #333;
+    border-radius: 0.5em;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s ease;
 }
 
 .project .links a:hover {
-    transform: scale(1.05);
+    background: #333;
+    color: #fff;
+    transform: translateY(-2px);
 }
 
-.project .links a.primary {
-    border-color: #ccc;
-    background: #f9f9f9;
-    color: #333;
-}
 
 /* =========================
    Contact Page
@@ -584,14 +604,7 @@ footer p {
     }
 
     .projects {
-        flex-direction: row;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-
-    .project {
-        flex: 1 1 45%; 
-        max-width: 45%;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
 
     .photo-gallery {
