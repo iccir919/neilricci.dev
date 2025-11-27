@@ -2,7 +2,9 @@ import { projects } from "./projects-list.js"
 
 const projectsContainer = document.getElementById("projects")
 
-projects.forEach(project => {
+projects
+.sort( (a,b) =>  new Date(b.completion_date) - new Date(a.completion_date) )
+.forEach(project => {
     const projectElement = document.createElement("div")
     projectElement.className = "project"
 

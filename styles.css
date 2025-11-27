@@ -156,7 +156,7 @@ nav {
    Recent Projects
    ========================= */
 
-.recent-projects-list {
+#recent-projects-list {
     display: flex;
     flex-direction: column;
     gap: 1.5em;
@@ -595,7 +595,7 @@ footer p {
         height: 200%;
     }
 
-    .recent-projects-list {
+    #recent-projects-list {
         gap: 2em;
     }
 
@@ -614,7 +614,7 @@ footer p {
 
 /* Desktop and up */
 @media (min-width: 1025px) {
-    .recent-projects-list {
+    #recent-projects-list {
         flex-direction: row;
         flex-wrap: wrap;
         gap: 2em;

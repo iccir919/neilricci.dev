@@ -1,5 +1,23 @@
 export const projects = [
     {
+        name: "Aronofsky Advisor",
+        description: "An AI movie recommendation app trained on a custom dataset of Darren Aronofsky films, offering tailored suggestions based on his body of work.",
+        completion_date: "2025-11-25",
+        skills: ["React", "Serverless functions", "OpenAI"],
+        link: "https://iccir919.github.io/aronofsky-advisor/",
+        github_repo: "https://github.com/iccir919/aronofsky-advisor",
+        imageUrl: "/assets/projects/aronofsky-advisor.png"
+    },
+    {
+        name: "Translation App",
+        description: "A fast, minimal translation tool powered by the OpenAI API, featuring instant text translation, language swapping, and a clean, responsive UI.",
+        completion_date: "2025-11-20",
+        skills: ["JavaScript", "OpenAI API", "HTML", "CSS"],
+        link: "https://iccir919.github.io/translation-app/",
+        github_repo: "https://github.com/iccir919/translation-app",
+        imageUrl: "/assets/projects/translation-app.png"
+    },
+    {
         name: "See My Sound",
         description: "An application that connects to your Spotify account and lets you see and interact with your listening data.",
         completion_date: "2025-11-11",
@@ -11,7 +29,7 @@ export const projects = [
     {
         name: "Neatly Cleaning Services",
         description: "A live business website built from designer mockups in collaboration with the client. Ongoing optimization includes SEO and traffic growth through Google Analytics.",
-        completion_date: null,
+        completion_date: "2025-09-15",
         skills: ["HTML", "CSS", "JavaScript", "Google Analytics"],
         link: "https://www.neatlycleaningservices.com/",
         github_repo: "https://github.com/iccir919/neatly",
