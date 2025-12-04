@@ -1,10 +1,19 @@
 export const projects = [
     {
+        name: "Yen Sid's Ride Recommender",
+        description: "A focused utility application that instantly surfaces wait times and distance metrics, allowing for fast, data-driven decisions on leisure activities.",
+        completion_date: "2025-12-04",
+        skills: ["JavaScript", "API", "OpenAI"],
+        link: "https://yen-sid.vercel.app/",
+        github_repo: "https://github.com/iccir919/yen-sid",
+        imageUrl: "/assets/projects/yen-sid.png"
+    },
+    {
         name: "Aronofsky Advisor",
         description: "An AI movie recommendation app trained on a custom dataset of Darren Aronofsky films, offering tailored suggestions based on his body of work.",
         completion_date: "2025-11-25",
         skills: ["React", "Serverless functions", "OpenAI"],
-        link: "https://iccir919.github.io/aronofsky-advisor/",
+        link: "https://aronofsky-advisor-6c7899hed-iccir919s-projects.vercel.app/",
         github_repo: "https://github.com/iccir919/aronofsky-advisor",
         imageUrl: "/assets/projects/aronofsky-advisor.png"
     },
@@ -12,7 +21,7 @@ export const projects = [
         name: "Translation App",
         description: "A fast, minimal translation tool powered by the OpenAI API, featuring instant text translation, language swapping, and a clean, responsive UI.",
         completion_date: "2025-11-20",
-        skills: ["JavaScript", "OpenAI API", "HTML", "CSS"],
+        skills: ["HTML", "CSS", "OpenAI API", "JavaScript"],
         link: "https://iccir919.github.io/translation-app/",
         github_repo: "https://github.com/iccir919/translation-app",
         imageUrl: "/assets/projects/translation-app.png"
