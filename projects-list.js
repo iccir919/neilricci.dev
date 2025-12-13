@@ -1,5 +1,14 @@
 export const projects = [
     {
+        name: "Gold Digger",
+        description: "Real-time gold investment tracker built with vanilla Node.js and SSE. Simulates purchases at live prices with automatic calculations and persistence.",
+        completion_date: "2025-12-12",
+        skills: ["JavaScript", "Node.js", "Server-Sent Events"],
+        link: "https://gold-digger-03i4.onrender.com/",
+        github_repo: "https://github.com/iccir919/gold-digger",
+        imageUrl: "/assets/projects/gold-digger.png"
+    },
+    {
         name: "Yen Sid's Ride Recommender",
         description: "A focused utility application that instantly surfaces wait times and distance metrics, allowing for fast, data-driven decisions on leisure activities.",
         completion_date: "2025-12-04",
@@ -13,7 +22,7 @@ export const projects = [
         description: "An AI movie recommendation app trained on a custom dataset of Darren Aronofsky films, offering tailored suggestions based on his body of work.",
         completion_date: "2025-11-25",
         skills: ["React", "Serverless functions", "OpenAI"],
-        link: "https://aronofsky-advisor-6c7899hed-iccir919s-projects.vercel.app/",
+        link: "https://aronofsky-advisor.vercel.app/",
         github_repo: "https://github.com/iccir919/aronofsky-advisor",
         imageUrl: "/assets/projects/aronofsky-advisor.png"
     },
@@ -22,7 +31,7 @@ export const projects = [
         description: "A fast, minimal translation tool powered by the OpenAI API, featuring instant text translation, language swapping, and a clean, responsive UI.",
         completion_date: "2025-11-20",
         skills: ["HTML", "CSS", "OpenAI API", "JavaScript"],
-        link: "https://iccir919.github.io/translation-app/",
+        link: "https://translation-app-azure.vercel.app/",
         github_repo: "https://github.com/iccir919/translation-app",
         imageUrl: "/assets/projects/translation-app.png"
     },
