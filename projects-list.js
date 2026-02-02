@@ -1,5 +1,14 @@
 export const projects = [
     {
+        name: "Habit Tracker",
+        description: "Full-stack habit tracking app with flexible weekly goals, calendar-based time logging, and streak visualization. Built with React, Express, and PostgreSQL.",
+        completion_date: "2026-01-29",
+        skills: ["React", "Node.js", "Express", "PostgreSQL", "REST APIs", "JWT Authentication"],
+        link: "https://your-railway-app-url.up.railway.app",
+        github_repo: "https://github.com/iccir919/habit-tracker",
+        imageUrl: "/assets/projects/habit-tracker.png"
+    },
+    {
         name: "Bay Wheels Unlocked 2025",
         description: "Bike-share analytics platform built with a Node.js + PGlite ETL pipeline and a React dashboard, transforming millions of trips into geospatial insights.",
         completion_date: "2026-01-03",
@@ -7,15 +16,6 @@ export const projects = [
         link: "https://bay-wheels-unlocked-2025.vercel.app/",
         github_repo: "https://github.com/iccir919/bay-wheels-unlocked-2025",
         imageUrl: "/assets/projects/bay-wheels-unlocked-2025.png"
-    },
-    {
-        name: "Gold Digger",
-        description: "Real-time gold investment tracker built with vanilla Node.js and SSE. Simulates purchases at live prices with automatic calculations and persistence.",
-        completion_date: "2025-12-12",
-        skills: ["JavaScript", "Node.js", "Server-Sent Events"],
-        link: "https://gold-digger-dy4q.onrender.com",
-        github_repo: "https://github.com/iccir919/gold-digger",
-        imageUrl: "/assets/projects/gold-digger.png"
     },
     {
         name: "Yen Sid's Ride Recommender",
@@ -31,7 +31,7 @@ export const projects = [
         description: "An AI movie recommendation app trained on a custom dataset of Darren Aronofsky films, offering tailored suggestions based on his body of work.",
         completion_date: "2025-11-25",
         skills: ["React", "Serverless functions", "OpenAI"],
-        link: "https://aronofsky-advisor.vercel.app/",
+        link: null,
         github_repo: "https://github.com/iccir919/aronofsky-advisor",
         imageUrl: "/assets/projects/aronofsky-advisor.png"
     },
