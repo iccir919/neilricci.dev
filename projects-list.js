@@ -1,5 +1,14 @@
 export const projects = [
     {
+        name: "Streak Seeker",
+        description: "Privacy-first Chrome extension for habit tracking with visual streak indicators, drag-and-drop reordering, and GitHub-style heatmaps. Built with React, Vite, and localStorage.",
+        completion_date: "2026-02-19",
+        skills: ["React", "Vite", "Chrome Extensions", "localStorage"],
+        link: "https://chromewebstore.google.com/detail/streak-seeker/jbldckdbhaibiejndigjmgdaacainphh?authuser=0&hl=en",
+        github_repo: "https://github.com/iccir919/streak-seeker",
+        imageUrl: "/assets/projects/streak-seeker.png"
+    },
+    {
         name: "Habit Tracker",
         description: "Full-stack habit tracking app with flexible weekly goals, calendar-based time logging, and streak visualization. Built with React, Express, and PostgreSQL.",
         completion_date: "2026-01-29",
