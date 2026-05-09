@@ -40,7 +40,7 @@ a:hover {
 
 h1, h2, h3 {
     font-weight: 900;
-    margin: 0 0 0.5;
+    margin: 0 0 0.5em;
 }
 
 /* =========================
@@ -70,7 +70,7 @@ nav {
 }
 
 .logo a:hover {
-    transform: scale(1.05)
+    transform: scale(1.05);
 }
 
 .nav-links {
@@ -168,7 +168,7 @@ nav {
     flex-direction: column;
     justify-content: space-between;
     padding: 1em;
-    background: #ffffffcf; 
+    background: #ffffffcf;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     color: initial;
@@ -203,7 +203,7 @@ nav {
 }
 
 .recent-projects a {
-    color: var(--color-text-primary);
+    color: var(--color-primary);
     font-size: 1rem;
     font-weight: 700;
     text-decoration-thickness: 0.5rem;
@@ -216,11 +216,13 @@ nav {
     transform: scale(1.05);
 }
 
-
-
 /* =========================
    Projects Page
    ========================= */
+
+.content {
+    margin-top: 2em;
+}
 
 .projects {
     margin-top: 2em;
@@ -237,13 +239,13 @@ nav {
     background: #fff;
     border-radius: .85em;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .project:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .project img {
@@ -262,23 +264,16 @@ nav {
     gap: 1em;
 }
 
-
 .project h2 {
     font-size: 1.3rem;
     margin: 0;
     color: #111;
 }
 
-
 .project .description {
     color: #444;
     font-size: 0.85rem;
     line-height: 1.25;
-}
-
-.project p strong {
-    font-weight: 600;
-    color: #000;
 }
 
 .project .skills {
@@ -319,203 +314,6 @@ nav {
     transform: translateY(-2px);
 }
 
-
-/* =========================
-   Contact Page
-   ========================= */
-
-.contact {
-    max-width: 500px;
-    width: 100%;
-    padding: 2em;
-    border-radius: 0.75em;
-    margin: 0 auto;
-}
-
-.contact h2 {
-    text-align: center;
-    margin-bottom: 1em;
-}
-
-.contact form {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-}
-
-.contact label {
-    font-weight: 600;
-}
-
-.contact input,
-.contact textarea {
-    width: 100%;
-    padding: 0.75em;
-    border: 1px solid #ccc;
-    border-radius: .5em;
-    font-size: 1rem;
-}
-
-.contact button {
-    background: #1a1a1a;
-    color: white;
-    border: none;
-    padding: 1em;
-    border-radius: 0.5em;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.contact button:hover {
-    transform: translateY(-1px);
-}
-
-
-.contact .email {
-    text-align: center;
-    margin-top: 2em;
-}
-
-.email-button {
-    display: inline-black;
-    margin-top: 0.5em;
-    background: #1a1a1a;
-    color: white;
-    padding: 0.75em 1.5em;
-    border-radius: 0.5em;
-    text-decoration: none;
-    font-weight: 600;
-    transition: transform 0.1s ease;
-}
-
-.email-button:hover,
-.email-button:active {
-    transform: translateY(-1px);
-}
-
-/* =========================
-   Photos Page
-   ========================= */
-
-.photo-gallery {
-    columns: 1 100%;
-    column-gap: 1em;
-    padding: 1em;
-}
-
-.photo {
-    break-inside: avoid;
-    margin-bottom: 1em;
-    border-radius: .75em;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    background: white;
-    cursor: zoom-in;
-    transition: transform 0.2s ease, box-shadow 0.2 ease;
-}
-
-.photo:hover {
-    transform: translate(-4px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-}
-
-.photo img {
-    width: 100%;
-    display: block;
-    height: auto;
-}
-
-figcaption {
-    padding: 0.75em 1em 1em;
-    font-size: 0.85rem;
-    color: #444;
-    display: flex;
-    flex-direction: column;
-}
-
-.photo-caption {
-    font-weight: 500;
-    margin-bottom: 0.25em;
-}
-
-.photo-date {
-    font-size: .75em;
-    color: #888;
-}
-
-#lightbox {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.9);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-#lightbox.hidden {
-    display: none;
-}
-
-#lightbox img {
-    max-width: 85%;
-    max-height: 75vh;
-    border-radius: .5em;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
-
-#lightbox p {
-    color: #eee;
-    margin-top: 1em;
-    font-size: 1em;
-    text-align: center;
-}
-
-#lightbox::after {
-    content: "x";
-    position: fixed;
-    top: 20px;
-    right: 30px;
-    font-size: 2rem;
-    color: #fff;
-    cursor: pointer;
-}
-
-/* =========================
-   Blog Page
-   ========================= */
-
-.blog-content {
-    margin: 3em auto;
-    max-width: var(--content-width);
-}
-
-.blog-content a {
-    text-underline-offset: 5px;
-    text-decoration-thickness: 0.25rem;
-}
-
-.blog-content ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.blog-content li {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-}
-
-.blog-content p {
-    font-size: 1rem;
-}
-
-br {
-    line-height: 2;
-}
-
 /* =========================
    Footer
    ========================= */
@@ -540,7 +338,7 @@ footer {
 .social-icon {
     width: 28px;
     height: 28px;
-    transition: transform 0.2 ease, opacity 0.2 ease;
+    transition: transform 0.2s ease, opacity 0.2s ease;
     opacity: 0.8;
 }
 
@@ -554,12 +352,6 @@ footer p {
     margin-top: 1.5em;
     font-size: 0.85rem;
     color: #777;
-}
-
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 /* =========================
@@ -580,19 +372,12 @@ footer p {
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        text-align: center;
-        gap: 3em;
         text-align: left;
+        gap: 3em;
     }
 
     .splash-section.bio {
         flex: 1 1 50%;
-    }
-
-    .splash-section img {
-        flex: 0 0 auto;
-        width: 200%;
-        height: 200%;
     }
 
     #recent-projects-list {
@@ -606,13 +391,8 @@ footer p {
     .projects {
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
-
-    .photo-gallery {
-        columns: 2 200px;
-    }
 }
 
-/* Desktop and up */
 @media (min-width: 1025px) {
     #recent-projects-list {
         flex-direction: row;
@@ -623,22 +403,4 @@ footer p {
     .recent-project {
         flex: 1 1 30%;
     }
-
-    .blog-content li {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .blog-content a {
-        color: black;
-        text-underline-offset: 5px;
-        text-decoration-thickness: 0.25rem;
-    }
-
-    .photo-gallery {
-        columns: 3 300px;
-    }
-
 }
-
-

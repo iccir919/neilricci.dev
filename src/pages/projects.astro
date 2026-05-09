@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { projects } from '../data/projects';
+
+// Sort by completion date, most recent first
+const sortedProjects = [...projects].sort(
+  (a, b) => new Date(b.completion_date).getTime() - new Date(a.completion_date).getTime()
+);
+---
+<BaseLayout
+  title="Projects - Neil Ricci"
+  description="Web development projects by Neil Ricci, featuring full-stack JavaScript apps, Chrome extensions, and data dashboards."
+>
+  <section class="content">
+    <h1>Projects</h1>
+    <div class="projects">
+      {sortedProjects.map((project) => (
+        <article class="project">
+          <img src={project.imageUrl} alt={`Screenshot of ${project.name}`} />
+          <div class="project-content">
+            <h2>{project.name}</h2>
+            <p class="description">{project.description}</p>
+            <div class="skills">
+              {project.skills.map((skill) => (
+                <span class="skill">{skill}</span>
+              ))}
+            </div>
+            <div class="links">
+              {project.link && (
+                <a href={project.link} target="_blank" rel="noopener noreferrer">Live</a>
+              )}
+              <a href={project.github_repo} target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
