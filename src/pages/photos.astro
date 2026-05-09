@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { photos } from '../data/photos';
+
+const formatDate = (iso: string) => {
+  const d = new Date(iso + 'T00:00:00');
+  return d.toLocaleDateString('en-US', { month: 'long', day: '2-digit', year: 'numeric' });
+};
+
+// Sort newest first
+const sortedPhotos = [...photos].sort((a, b) => b.date.localeCompare(a.date));
+---
+<BaseLayout
+  title="Photos - Neil Ricci"
+  description="Photography by Neil Ricci — Bay Area landscapes, nature, and urban scenes."
+>
+  <section class="content">
+    <h1>Photos</h1>
+    <div class="photo-gallery">
+      {sortedPhotos.map((photo) => (
+        <figure class="photo">
+          <img
+            src={`/assets/photos/${photo.filename}`}
+            alt={photo.alt}
+            loading="lazy"
+          />
+          <figcaption>
+            <span class="photo-caption">{photo.caption}</span>
+            <span class="photo-date">{formatDate(photo.date)}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <div id="lightbox" class="hidden">
+    <img id="lightbox-img" src="" alt="" />
+    <p id="lightbox-caption"></p>
+  </div>
+</BaseLayout>
+
+<script>
+  const lightbox = document.getElementById("lightbox")!;
+  const lightboxImg = document.getElementById("lightbox-img") as HTMLImageElement;
+  const lightboxCaption = document.getElementById("lightbox-caption")!;
+
+  document.querySelectorAll<HTMLImageElement>(".photo img").forEach((img) => {
+    img.addEventListener("click", () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      const figure = img.closest("figure")!;
+      const caption = figure.querySelector(".photo-caption")!.textContent;
+      const date = figure.querySelector(".photo-date")!.textContent;
+      lightboxCaption.textContent = `${caption} — ${date}`;
+      lightbox.classList.remove("hidden");
+    });
+  });
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox || e.target === lightboxCaption) {
+      lightbox.classList.add("hidden");
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      lightbox.classList.add("hidden");
+    }
+  });
+</script>

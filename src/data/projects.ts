@@ -3,7 +3,7 @@ export interface Project {
   description: string;
   completion_date: string;
   skills: string[];
-  link: string | null;
+  link: string;
   github_repo: string;
   imageUrl: string;
 }
@@ -19,15 +19,6 @@ export const projects: Project[] = [
     imageUrl: "/assets/projects/streak-seeker.png"
   },
   {
-    name: "Habit Tracker",
-    description: "Full-stack habit tracking app with flexible weekly goals, calendar-based time logging, and streak visualization. Built with React, Express, and PostgreSQL.",
-    completion_date: "2026-01-29",
-    skills: ["React", "Node.js", "Express", "PostgreSQL", "REST APIs", "JWT Authentication"],
-    link: "https://your-railway-app-url.up.railway.app",
-    github_repo: "https://github.com/iccir919/habit-tracker",
-    imageUrl: "/assets/projects/habit-tracker.png"
-  },
-  {
     name: "Bay Wheels Unlocked 2025",
     description: "Bike-share analytics platform built with a Node.js + PGlite ETL pipeline and a React dashboard, transforming millions of trips into geospatial insights.",
     completion_date: "2026-01-03",
@@ -35,24 +26,6 @@ export const projects: Project[] = [
     link: "https://bay-wheels-unlocked-2025.vercel.app/",
     github_repo: "https://github.com/iccir919/bay-wheels-unlocked-2025",
     imageUrl: "/assets/projects/bay-wheels-unlocked-2025.png"
-  },
-  {
-    name: "Yen Sid's Ride Recommender",
-    description: "A focused utility application that instantly surfaces wait times and distance metrics, allowing for fast, data-driven decisions on leisure activities.",
-    completion_date: "2025-12-04",
-    skills: ["JavaScript", "API", "OpenAI"],
-    link: "https://yen-sid.vercel.app/",
-    github_repo: "https://github.com/iccir919/yen-sid",
-    imageUrl: "/assets/projects/yen-sid.png"
-  },
-  {
-    name: "Aronofsky Advisor",
-    description: "An AI movie recommendation app trained on a custom dataset of Darren Aronofsky films, offering tailored suggestions based on his body of work.",
-    completion_date: "2025-11-25",
-    skills: ["React", "Serverless functions", "OpenAI"],
-    link: null,
-    github_repo: "https://github.com/iccir919/aronofsky-advisor",
-    imageUrl: "/assets/projects/aronofsky-advisor.png"
   },
   {
     name: "Translation App",

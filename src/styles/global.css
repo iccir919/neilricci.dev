@@ -315,6 +315,169 @@ nav {
 }
 
 /* =========================
+   Photos Page
+   ========================= */
+
+.photo-gallery {
+    columns: 1 100%;
+    column-gap: 1em;
+    padding: 1em;
+}
+
+.photo {
+    break-inside: avoid;
+    margin-bottom: 1em;
+    border-radius: .75em;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: white;
+    cursor: zoom-in;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.photo:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.photo img {
+    width: 100%;
+    display: block;
+    height: auto;
+}
+
+figcaption {
+    padding: 0.75em 1em 1em;
+    font-size: 0.85rem;
+    color: #444;
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-caption {
+    font-weight: 500;
+    margin-bottom: 0.25em;
+}
+
+.photo-date {
+    font-size: .75em;
+    color: #888;
+}
+
+#lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#lightbox.hidden {
+    display: none;
+}
+
+#lightbox img {
+    max-width: 85%;
+    max-height: 75vh;
+    border-radius: .5em;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#lightbox p {
+    color: #eee;
+    margin-top: 1em;
+    font-size: 1em;
+    text-align: center;
+}
+
+#lightbox::after {
+    content: "x";
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* =========================
+   Contact Page
+   ========================= */
+
+.contact {
+    max-width: 500px;
+    width: 100%;
+    padding: 2em;
+    border-radius: 0.75em;
+    margin: 0 auto;
+}
+
+.contact h2 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.contact label {
+    font-weight: 600;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    padding: 0.75em;
+    border: 1px solid #ccc;
+    border-radius: .5em;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.contact button {
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    padding: 1em;
+    border-radius: 0.5em;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.contact button:hover {
+    transform: translateY(-1px);
+}
+
+.contact .email {
+    text-align: center;
+    margin-top: 2em;
+}
+
+.email-button {
+    display: inline-block;
+    margin-top: 0.5em;
+    background: #1a1a1a;
+    color: white;
+    padding: 0.75em 1.5em;
+    border-radius: 0.5em;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.1s ease;
+}
+
+.email-button:hover,
+.email-button:active {
+    transform: translateY(-1px);
+}
+
+/* =========================
    Footer
    ========================= */
 
@@ -391,9 +554,14 @@ footer p {
     .projects {
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
+
+    .photo-gallery {
+        columns: 2 200px;
+    }
 }
 
 @media (min-width: 1025px) {
+
     #recent-projects-list {
         flex-direction: row;
         flex-wrap: wrap;
@@ -402,5 +570,9 @@ footer p {
 
     .recent-project {
         flex: 1 1 30%;
+    }
+
+    .photo-gallery {
+        columns: 3 300px;
     }
 }
