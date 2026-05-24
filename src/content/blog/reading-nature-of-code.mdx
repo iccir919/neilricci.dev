@@ -1,0 +1,21 @@
+---
+title: "Reading The Nature of Code"
+description: "Starting a series of notes as I work through Daniel Shiffman's book on simulating natural systems with code."
+pubDate: 2026-05-10
+---
+
+import P5Sketch from '../../components/P5Sketch.tsx';
+
+I am committing myself to reading [The Nature of Code](https://natureofcode.com/) by Daniel Shiffman, which I've had sitting on my bookshelf for years but never opened. It's a book about simulating natural systems with code — vectors, forces, oscillation, particle systems, autonomous agents, cellular automata and neural networks. Each chapter builds on the last.
+
+The examples are written in p5.js, which I've used a little before and want to get more comfortable with. I'm not sure where this will take me — maybe better intuitions for animation and motion, maybe ideas for visualizations, maybe just the pleasure of making things bounce. Honest answer: I'm curious.
+
+I figured I'd write a short post per chapter as I go. Not a formal review or tutorial — more like notes on what I worked through, what surprised me, and what I made along the way. Each post will probably include a sketch or two of my own.
+
+Here's a bouncing ball to start, because what else would you put at the top of a post like this:
+
+<P5Sketch client:only="react" sketchName="bouncing-ball" />
+
+Nothing fancy yet — that's literally an ellipse with two velocity values flipping sign at the canvas edges. But it's the kind of thing the rest of the book builds on. By chapter 6 you're supposedly simulating flocks of birds. We'll see.
+
+Next post: Chapter 1, Vectors.
