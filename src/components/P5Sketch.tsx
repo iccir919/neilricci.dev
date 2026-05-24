@@ -9,7 +9,7 @@ interface Props {
 
 // Map of sketch name -> dynamic loader
 const sketches: Record<string, () => Promise<{ default: (p: p5) => void }>> = {
-  'bouncing-ball': () => import('../sketches/bouncing-ball.js'),
+  'random-walk-circles': () => import('../sketches/random-walk-circles.js'),
 };
 
 export default function P5Sketch({ sketchName, width = 600, height = 400 }: Props) {
