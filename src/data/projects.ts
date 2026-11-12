@@ -3,12 +3,29 @@ export interface Project {
   description: string;
   completion_date: string;
   skills: string[];
-  link: string;
+  link?: string;
   github_repo: string;
   imageUrl: string;
 }
 
 export const projects: Project[] = [
+  {
+    name: "Tiny Library",
+    description: "A book catalog built with Next.js and TypeScript from a Figma design, with category pages, book detail pages with a custom 404, and live search suggestions.",
+    completion_date: "2026-11-10",
+    skills: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+    link: "https://tiny-library-orcin.vercel.app/",
+    github_repo: "https://github.com/iccir919/tiny-library",
+    imageUrl: "/assets/projects/tiny-library.png"
+  },
+  {
+    name: "Screen Time Tracker",
+    description: "Keeps iPhone and Mac Screen Time history beyond Apple's four-week limit. Decodes Apple's undocumented Biome files into a local SQLite archive, checks totals against Apple's own numbers, and serves a local dashboard for exploring trends by app and category.",
+    completion_date: "2026-10-28",
+    skills: ["Node.js", "SQLite", "Reverse Engineering", "Chart.js"],
+    github_repo: "https://github.com/iccir919/screen-time-tracker",
+    imageUrl: "/assets/projects/screen-time-tracker.png"
+  },
   {
     name: "Streak Seeker",
     description: "Privacy-first Chrome extension for habit tracking with visual streak indicators, drag-and-drop reordering, and GitHub-style heatmaps. Built with React, Vite, and localStorage.",
@@ -74,10 +91,9 @@ export const projects: Project[] = [
   },
   {
     name: "Pulse Watch",
-    description: "A Fitbit-powered app that retrieves and visualizes heart rate data, with options for data export. Used by over 100 monthly active users.",
+    description: "My first real project: a Fitbit-powered app for viewing and exporting your heart rate data, used by over 100 monthly active users. Retired after the Fitbit Web API shut down in October 2026.",
     completion_date: "2018-10-06",
     skills: ["JavaScript", "Fitbit API", "Implicit Grant Authentication"],
-    link: "https://iccir919.github.io/pulseWatch/public/index.html",
     github_repo: "https://github.com/iccir919/pulseWatch",
     imageUrl: "/assets/projects/pulse-watch.png"
   },
