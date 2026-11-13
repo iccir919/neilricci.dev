@@ -5,7 +5,10 @@ import mdx from '@astrojs/mdx';
 
 import react from '@astrojs/react';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [mdx(), react()]
+  site: 'https://www.neilricci.dev',
+  integrations: [mdx(), react(), sitemap()]
 });
