@@ -20,7 +20,7 @@ export const projects: Project[] = [
   },
   {
     name: "Screen Time Tracker",
-    description: "Apple deletes Screen Time history after four weeks. This keeps it. Reads Apple’s undocumented on-device data into a local SQLite archive, verifies it against Apple’s own totals, and charts long-term trends by app and category.",
+    description: "Apple deletes Screen Time history after four weeks. This keeps it. Reads Apple's undocumented on-device data into a local SQLite archive and serves a dashboard for exploring long-term trends by app and category.",
     completion_date: "2026-10-28",
     skills: ["Node.js", "SQLite", "Reverse Engineering", "Chart.js"],
     github_repo: "https://github.com/iccir919/screen-time-tracker",

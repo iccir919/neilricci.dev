@@ -10,5 +10,6 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.neilricci.dev',
+  trailingSlash: 'never',
   integrations: [mdx(), react(), sitemap()]
 });
