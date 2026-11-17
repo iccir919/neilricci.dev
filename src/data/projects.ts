@@ -10,6 +10,15 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    name: "Personal Dashboard",
+    description: "A Chrome extension that replaces the new tab page, and my everyday new tab. Shows a live clock, hourly and 7 day forecasts for multiple saved locations, the moon phase with upcoming phases, sunrise and sunset, and my most visited sites, all from free public APIs with no API keys.",
+    completion_date: "2026-11-16",
+    skills: ["JavaScript", "Chrome Extensions", "REST APIs", "localStorage"],
+    link: "https://iccir919.github.io/personal-dashboard/index.html",
+    github_repo: "https://github.com/iccir919/personal-dashboard",
+    imageUrl: "/assets/projects/personal-dashboard.png"
+  },
+  {
     name: "Tiny Library",
     description: "A book catalog built with Next.js and TypeScript from a Figma design, with category pages, book detail pages with a custom 404, and live search suggestions.",
     completion_date: "2026-11-10",
@@ -45,24 +54,6 @@ export const projects: Project[] = [
     imageUrl: "/assets/projects/bay-wheels-unlocked-2025.png"
   },
   {
-    name: "Translation App",
-    description: "A fast, minimal translation tool powered by the OpenAI API, featuring instant text translation, language swapping, and a clean, responsive UI.",
-    completion_date: "2025-11-20",
-    skills: ["HTML", "CSS", "OpenAI API", "JavaScript"],
-    link: "https://translation-app-azure.vercel.app/",
-    github_repo: "https://github.com/iccir919/translation-app",
-    imageUrl: "/assets/projects/translation-app.png"
-  },
-  {
-    name: "See My Sound",
-    description: "An application that connects to your Spotify account and lets you see and interact with your listening data.",
-    completion_date: "2025-11-11",
-    skills: ["React", "React Context", "PKCE Authentication Flow", "CSS", "HTML"],
-    link: "https://see-my-sound.vercel.app/",
-    github_repo: "https://github.com/iccir919/see-my-sound",
-    imageUrl: "/assets/projects/see-my-sound.png"
-  },
-  {
     name: "Neatly Cleaning Services",
     description: "A live business website built from designer mockups in collaboration with the client. Ongoing optimization includes SEO and traffic growth through Google Analytics.",
     completion_date: "2025-09-15",
@@ -70,15 +61,6 @@ export const projects: Project[] = [
     link: "https://www.neatlycleaningservices.com/",
     github_repo: "https://github.com/iccir919/neatly",
     imageUrl: "/assets/projects/neatly.png"
-  },
-  {
-    name: "Chef Claude",
-    description: "A React app that integrates with the Claude.ai API to generate custom recipes based on user-provided ingredients.",
-    completion_date: "2025-07-01",
-    skills: ["React", "Claude.ai API", "AWS Lambda"],
-    link: "https://neil-scrimba-frontend-career-path.netlify.app/chef-claude/dist/index.html",
-    github_repo: "https://github.com/iccir919/scrimba-frontend-developer-career-path/tree/main/chef-claude",
-    imageUrl: "/assets/projects/chef-claude.png"
   },
   {
     name: "Oldagram",
